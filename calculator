@@ -63,11 +63,5 @@ int main(){
   cout<< "Your profit would be"<< profit<< endl;
 
 return 0
-}
-    
-  
-    
-
-  
-    
+   
 }
