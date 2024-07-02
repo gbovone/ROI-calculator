@@ -10,22 +10,22 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
 
     let totalInteractions = chatInteractions + voiceInteractions;
     if (numAgents<=50){
-        let licensingFee=24,000;
+        licensingFee=24,000;
     } else{ 
-        let licensingFee = (Math.floor(numAgents / 50)) * 2000 * 12;
+        licensingFee = (Math.floor(numAgents / 50)) * 2000 * 12;
           }
     let deliveryFee = 7000;
 
     let costPerInteraction;
 
     if (totalInteractions >= 100000) {
-        let costPerInteraction = 0.012;
+        costPerInteraction = 0.012;
     } else if (totalInteractions >= 50000) {
-        let costPerInteraction = 0.016;
+        costPerInteraction = 0.016;
     } else if (totalInteractions >= 10000) {
-        let costPerInteraction = 0.02;
+        costPerInteraction = 0.02;
     } else if (totalInteractions >= 0) {
-        let costPerInteraction = 0.024;
+        costPerInteraction = 0.024;
     } else {
         alert("Invalid interactions");
         return;
