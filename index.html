@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Cost Calculator</h1>
+        <form id="calculatorForm">
+            <label for="numAgents">Number of Agents:</label>
+            <input type="number" id="numAgents" required>
+            
+            <label for="agentSalary">Monthly Salary of Agents:</label>
+            <input type="number" step="0.01" id="agentSalary" required>
+            
+            <label for="chatInteractions">Chat Interactions per Month:</label>
+            <input type="number" id="chatInteractions" required>
+            
+            <label for="voiceInteractions">Voice Interactions per Month:</label>
+            <input type="number" id="voiceInteractions" required>
+            
+            <label for="resolutionTime">Average Resolution Time (minutes):</label>
+            <input type="number" id="resolutionTime" required>
+            
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="results">
+            <p>Your savings would be: <span id="profit"></span></p>
+            <p>Days saved using AI: <span id="daysSaved"></span></p>
+            <p>Amount of tickets resolved using AI: <span id="ticketsResolved"></span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+styles.css
+css
+Copy code
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#results {
+    margin-top: 20px;
+    padding: 10px;
+    background: #e9ecef;
+    border-radius: 4px;
+}
+
+#results p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+script.js
+javascript
+Copy code
+document.getElementById('calculatorForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let numAgents = parseInt(document.getElementById('numAgents').value);
+    let agentSalary = parseFloat(document.getElementById('agentSalary').value);
+    let chatInteractions = parseInt(document.getElementById('chatInteractions').value);
+    let voiceInteractions = parseInt(document.getElementById('voiceInteractions').value);
+    let resolutionTime = parseInt(document.getElementById('resolutionTime').value);
+
+    let totalInteractions = chatInteractions + voiceInteractions;
+
+    let licensingFee = Math.ceil(numAgents / 50) * 2000 * 12;
+    let deliveryFee = 7000;
+
+    let costPerInteraction;
+
+    if (totalInteractions >= 100000) {
+        costPerInteraction = 0.012;
+    } else if (totalInteractions >= 50000) {
+        costPerInteraction = 0.016;
+    } else if (totalInteractions >= 10000) {
+        costPerInteraction = 0.02;
+    } else if (totalInteractions >= 0) {
+        costPerInteraction = 0.024;
+    } else {
+        alert("Invalid interactions");
+        return;
+    }
+
+    let aiCost = ((chatInteractions + voiceInteractions) * 0.3 * 12) * costPerInteraction;
+    let voiceTechnology = (((voiceInteractions * resolutionTime) * 0.3 * 0.5) / 60) * 2.4;
+
+    let totalAI = voiceTechnology + aiCost + licensingFee + deliveryFee;
+
+    let normalCost = numAgents * agentSalary;
+    let newTotal = totalAI + (normalCost * 0.7);
+
+    let profit = newTotal - normalCost;
+
+    let daysSaved = Math.floor((voiceInteractions + chatInteractions) / 1440);
+
+    let ticketsResolved = Math.floor(((chatInteractions + voiceInteractions) * 12) * 0.3);
+
+    document.getElementById('profit').textContent = profit.toFixed(2);
+    document.getElementById('daysSaved').textContent = daysSaved;
+    document.getElementById('ticketsResolved').textContent = ticketsResolved;
+});
