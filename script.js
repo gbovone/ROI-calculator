@@ -19,21 +19,21 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
 
     let costPerInteraction;
 
-    if (totalInteractions >= 100000) {
+    if (totalInteractions*.3 >= 100000) {
         costPerInteraction = 0.012;
-    } else if (totalInteractions >= 50000) {
+    } else if (totalInteractions*.3 >= 50000) {
         costPerInteraction = 0.016;
-    } else if (totalInteractions >= 10000) {
+    } else if (totalInteractions*.3 >= 10000) {
         costPerInteraction = 0.02;
-    } else if (totalInteractions >= 0) {
+    } else if (totalInteractions*.3 >= 0) {
         costPerInteraction = 0.024;
     } else {
         alert("Invalid interactions");
         return;
     }
 
-    let aiCost = ((chatInteractions + voiceInteractions) * 0.3 * 12) * costPerInteraction;
-    let voiceTechnology = (((voiceInteractions * resolutionTime) * 0.3 * 0.5) / 60) * 2.4;
+    let aiCost = ((((chatInteractions + voiceInteractions) * 0.3) * 12) * costPerInteraction);
+    let voiceTechnology = ((((voiceInteractions * resolutionTime) * 0.3 * 0.5 * 12) / 60) * 2.4);
 
     let totalAI = voiceTechnology + aiCost + licensingFee + deliveryFee;
 
