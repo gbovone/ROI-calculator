@@ -33,7 +33,7 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
     }
 
     let aiCost = ((((chatInteractions + voiceInteractions) * 0.3) * 12) * costPerInteraction);
-    let voiceTechnology = ((((((voiceInteractions * resolutionTime) * 0.3) * 0.5) * 12) / 60) * 2.4);
+    let voiceTechnology = (((voiceInteractions * 12 * .3 * resolutionTime *.5) / 60) * 2.4);
 
     let totalAI = voiceTechnology + aiCost + licensingFee + deliveryFee;
 
