@@ -9,6 +9,7 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
     let resolutionTime = parseInt(document.getElementById('resolutionTime').value);
 
     let totalInteractions = chatInteractions + voiceInteractions;
+    let licensingFee;
     if (numAgents<=50){
         licensingFee=24,000;
     } else{ 
