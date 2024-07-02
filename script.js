@@ -37,10 +37,10 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
 
     let totalAI = voiceTechnology + aiCost + licensingFee + deliveryFee;
 
-    let normalCost = numAgents * agentSalary*12;
-    let newTotal = totalAI + (normalCost - (normalCost*.3));
+    let normalCost = numAgents * agentSalary* 12;
+    let newTotal = totalAI + (normalCost*.7);
 
-    let profit = newTotal - normalCost;
+    let profit = normalCost-newTotal;
 
     let daysSaved = Math.floor((((voiceInteractions + chatInteractions)*12*.3)*resolutionTime) / 1440);
 
