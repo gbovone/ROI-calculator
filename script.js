@@ -13,7 +13,7 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
     if (numAgents<=50){
         licensingFee=24,000;
     } else{ 
-        licensingFee = (((Math.floor(numAgents / 50)) * 2000) * 12);
+        licensingFee = Math.ceil(numAgents / 50) * 2000 * 12;
           }
     let deliveryFee = 7000;
 
