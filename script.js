@@ -38,7 +38,7 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
 
     let profit = newTotal - normalCost;
 
-    let daysSaved = Math.floor((voiceInteractions + chatInteractions) / 1440);
+    let daysSaved = Math.floor((((voiceInteractions + chatInteractions)*12*.3)*resolutionTime) / 1440);
 
     let ticketsResolved = Math.floor(((chatInteractions + voiceInteractions) * 12) * 0.3);
 
