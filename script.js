@@ -13,7 +13,7 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
     if (numAgents<=50){
         licensingFee=24,000;
     } else{ 
-        licensingFee = (Math.floor(numAgents / 50)) * 2000 * 12;
+        licensingFee = (((Math.floor(numAgents / 50)) * 2000) * 12);
           }
     let deliveryFee = 7000;
 
@@ -33,12 +33,12 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
     }
 
     let aiCost = ((((chatInteractions + voiceInteractions) * 0.3) * 12) * costPerInteraction);
-    let voiceTechnology = ((((voiceInteractions * resolutionTime) * 0.3 * 0.5 * 12) / 60) * 2.4);
+    let voiceTechnology = ((((((voiceInteractions * resolutionTime) * 0.3) * 0.5) * 12) / 60) * 2.4);
 
     let totalAI = voiceTechnology + aiCost + licensingFee + deliveryFee;
 
     let normalCost = numAgents * agentSalary;
-    let newTotal = totalAI + (normalCost * 0.7);
+    let newTotal = totalAI + (normalCost - (normalCost*.3));
 
     let profit = newTotal - normalCost;
 
