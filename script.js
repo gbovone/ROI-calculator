@@ -9,8 +9,11 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
     let resolutionTime = parseInt(document.getElementById('resolutionTime').value);
 
     let totalInteractions = chatInteractions + voiceInteractions;
-
-    let licensingFee = Math.ceil(numAgents / 50) * 2000 * 12;
+    if (numAgents<=50){
+        licensingFee=24,000;
+    } else{ 
+        let licensingFee = (Math.floor(numAgents / 50)) * 2000 * 12;
+          }
     let deliveryFee = 7000;
 
     let costPerInteraction;
