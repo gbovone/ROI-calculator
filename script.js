@@ -10,7 +10,7 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
 
     let totalInteractions = chatInteractions + voiceInteractions;
 
-    let licensingFee = Math.trunc((numAgents / 50) * 2000 * 12);
+    let licensingFee = Math.trunc(numAgents / 50) * 2000 * 12;
     let deliveryFee = 7000;
 
     let costPerInteraction;
