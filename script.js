@@ -37,7 +37,7 @@ document.getElementById('calculatorForm').addEventListener('submit', function(e)
 
     let totalAI = voiceTechnology + aiCost + licensingFee + deliveryFee;
 
-    let normalCost = numAgents * agentSalary;
+    let normalCost = numAgents * agentSalary*12;
     let newTotal = totalAI + (normalCost - (normalCost*.3));
 
     let profit = newTotal - normalCost;
